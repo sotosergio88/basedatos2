@@ -52,3 +52,7 @@
                         CONSTRAINT PK1_ID_PELICULA FOREIGN KEY(ID_PELICULA) REFERENCES PELICULA(ID_PELICULA),
                         CONSTRAINT PK2_ID_HORARIO FOREIGN KEY(ID_HORARIO) REFERENCES HORARIOS(ID_HORARIO)
                         );
+                        CREATE SEQUENCE sec_pelicula
+                    start with 1
+                    increment by 1
+                    nomaxvalue;
