@@ -56,3 +56,23 @@
                     start with 1
                     increment by 1
                     nomaxvalue;
+                     SET SERVEROUTPUT ON;
+                    
+                    CREATE OR REPLACE PROCEDURE HOLA_MUNDO(NOMBRE IN VARCHAR2)
+                    AS
+                    BEGIN
+                    --AQUI VA LA LOGICA
+                    DBMS_OUTPUT.PUT_LINE('HOLA COMO ESTAS '||NOMBRE);
+                    END;
+                    /
+                    BEGIN
+                    HOLA_MUNDO('SERGIO ENRIQUE');
+                    END;
+                    /
+                    DECLARE
+                    VALOR NUMBER;
+                    BEGIN
+                    SUMA(12,8,VALOR);
+                    DBMS_OUTPUT.PUT_LINE('LA SUMA ES'||VALOR);
+                    END;
+                    /
