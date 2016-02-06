@@ -1,0 +1,42 @@
+CREATE TABLE SIMPLE1(ID_SIMPLE INTEGER,
+                    EDAD INTEGER,
+                    NOMBRE VARCHAR2(40));
+--LA LLENAMOS CON INFORMACION RAPIDA
+DECLARE 
+mi_edad integer;
+BEGIN
+mi_edad:=20;
+FOR i IN 1..20 LOOP
+mi_edad:=mi_edad+i;
+INSERT INTO SIMPLE1 VALUES(i,mi_edad,'SERGIO ENRIQUE');
+END LOOP;
+END;
+/
+--HACEMOS SELECT TODO FROM SIMPLE1;
+SELECT * FROM SIMPLE1;
+/*cursor simple de una sola ocurrencia 
+crear un cursor que busque el id que valga 21 y susituir el
+nombre del el del profe
+*/
+SET serveroutput ON;
+DECLARE
+--aqui va la variable donde se va a guardar el cursor
+mi_nombre varchar2(40);
+BEGIN
+/*
+se crean las multiples ocurrencias cuando generas o corres el codigo varias veces
+lo cual hace que se multipliquen los mismo valores generando que tengas que 
+ultilizar multiples ocurrencias.
+--el into convierte esta sentencia en un cursor
+*/
+SELECT nombre INTO mi_nombre from SIMPLE1 where EDAD=21;
+dbms_output.put_line(mi_nombre);
+end;
+/
+update SIMPLE1 set nombre='xxx' where EDAD=21;
+select * from simple1;
+delete from simple1;
+
+insert into simple1 values(1,21,'juan');
+insert into simple1 values(2,23,'ana');
+insert into simple1 values(3,25,'pedro');
