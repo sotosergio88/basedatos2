@@ -1,0 +1,7 @@
+Elabora una consulta que obtenga el nombre del vendedor 
+y las ventas realizadas por totales por dicho vendedor, por el 
+total de las tiendas en las que esuvo. Debe haber una columna adicional 
+donde debe apacer un campo premio, el cual se obtiene con la siguiente formula 
+premio= (sueldo base del trabajador + ventas totales)*0.15;
+
+(tarea)
