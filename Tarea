@@ -1,0 +1,52 @@
+3 tablas (minimo) normatizadas y relacionadas correctamente.
+
+create database universidad;
+use universidad;
+
+create table estudiante(id_matricula integer not null,
+              nombre varchar2(30)  not null,
+              ap_paterno varchar2(30)not null,
+              ap_materno varchar2(30)not null,
+              fechanacimiento date not null,
+              sexo varchar2(15) not null,
+              estadocivil varchar2(15) not null,
+              ocupacion varchar2(50) not null,
+              ingresos integer ,
+              direccion varchar2(50) not null,
+              telcasa varchar(20) not null,
+              telcelular varchar (20) not null,
+              email varchar2(45) not null,
+constraint pk_id_matricula primary key(id_matricula));
+describe estudiante;
+create table carrera(id_carrera integer not null,
+             id_matricula integer not null,
+             nombre varchar(50) not null,
+             custrimestre integer not null,
+             promediogeneral integer not null,
+             observaciones varchar2(50),
+constraint pk_id_carrera primary key (id_carrera),
+constraint pk1_id_matricula foreign key(id_matricula)  references estudiante(id_matricula));
+describe carrera;
+create table datosfamiliares(id_tutor integer not null,
+             id_matricula integer not null,
+             nombre varchar2(30) not null,
+             ap_paterno varchar(30) not null,
+             ap_materno varchar(30) not null,
+             fechanacimineto date not null,
+             parentesco varchar2(20) not null,
+             telcasa varchar2(20) not null,
+             telcel varchar(20) not null,
+             email varchar(50) not null,
+constraint pk_id_tutor primary key (id_tutor),
+constraint pk2_id_matricula foreign key(id_matricula) references estudiante(id_matricula));
+describe datosfamiliares;
+create table historialacademico(id_historial integer not null,
+             id_matricula integer not null,
+             nombreescuela varchar2(50) not null,
+             registrosep varchar2(50) not null,
+             promedio integer not null,
+             direccion varchar(100),
+             observacion varchar2(100),
+constraint pk_id_historial primary key (id_historial),
+constraint pk3_id_matricula foreign key(id_matricula) references estudiante(id_matricula));
+describe historialacademico;
