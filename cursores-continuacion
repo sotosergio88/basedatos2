@@ -7,10 +7,9 @@ premio= (sueldo base del trabajador + ventas totales)*0.15;
 (tarea)
 
 ------------------------------------------------------------------------------------
-CREATE TABLE EMPLEADO_VENTAS (
-id_cliente NUMBER,
-nombre_cliente VARCHAR2 (100),
-SUELDO_BASE NUMBER,
+CREATE TABLE EMPLEADO_VENTAS (id_cliente NUMBER,
+                              nombre_cliente VARCHAR2 (100),
+                              SUELDO_BASE NUMBER,
 CONSTRAINT PK_ID_CLIENTE PRIMARY KEY (ID_CLIENTE));
 
 insert into EMPLEADO_VENTAS values(1,'Juan',5200);
@@ -21,12 +20,11 @@ insert into EMPLEADO_VENTAS values(5,'Chana',4600);
 
 select * from EMPLEADO_VENTAS;
 
-CREATE TABLE SUCURSAL(
-ID_SUCURSAL NUMBER,
-ID_CLIENTE NUMBER,
-NOMBRE VARCHAR2(120),
-TELEFONO VARCHAR2(40),
-VENTA NUMBER,
+CREATE TABLE SUCURSAL( ID_SUCURSAL NUMBER,
+                       ID_CLIENTE NUMBER,
+                       NOMBRE VARCHAR2(120),
+                       TELEFONO VARCHAR2(40),
+                       VENTA NUMBER,
 CONSTRAINT PK_ID_SUCURSAL PRIMARY KEY (ID_SUCURSAL),
 CONSTRAINT FK_ID_CLIENTE1 FOREIGN KEY (ID_CLIENTE) REFERENCES EMPLEADO_VENTAS (ID_CLIENTE));
 
