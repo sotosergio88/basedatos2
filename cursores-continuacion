@@ -43,7 +43,33 @@ INSERT INTO SUCURSAL VALUES(10,5,'LAS AMERICAS', '67 55 66 77',4000);
 INSERT INTO SUCURSAL VALUES(11,5,'PERISUR', '67 55 66 77',4000);
 INSERT INTO SUCURSAL VALUES(12,5,'PERISUR', '67 55 66 77',4000);
 INSERT INTO SUCURSAL VALUES(13,5,'PLAZA COYOACAN', '67 55 66 77',4000);
+-------------------------sol....----------
+set serveroutput on;
+declare
+id_actual integer;
+total_actual integer;
+nombre_actual varchar2(120);
+cursor cur Is select id_cliente, venta from sucursal order by id_cliente;
+begin
+id_actual:=1;
+total_actual:=0;
+select nombre_cliente into nombre_actual from empleado_ventas where id_cliente=id_actual;
+for fila in cur loop
+if id_actual=fila.id_cliente then
+total_actual:=total_actual+fila.venta;
+else
 
+dbms_output.put_line('nombre '||nombre_actual ||'suma total:'||total_actual);
+id_actual:=fila.id_cliente;
+total_actual:=fila.venta;
+select nombre_cliente into nombre_actual from empleado_ventas where id_cliente=id_actual;
+end if;
+end loop;
+dbms_output.put_line('nombre '||nombre_actual ||'suma total:'||total_actual);
+end;
+/
+
+_______________________________________
 SELECT * FROM SUCURSAL;
 
 declare 
