@@ -1,0 +1,46 @@
+create table registro(id_registro integer,
+                      nombre varchar(30),
+                      email varchar(30),
+                      edad integer,
+constraint pk_id_registro primary key (id_registro));
+create table registro_mayores(id_regmayores integer,
+                              nombre varchar(30),
+                              email varchar(30),
+                              edad integer,
+constraint pk_id_regmayores primary key (id_regmayores));
+create table registro_menores(id_regmenores integer,
+                              nombre varchar(30),
+                              email varchar(30),
+                              edad integer,
+constraint pk_id_regmenores primary key (id_regmenores));
+
+
+
+create or replace trigger respaldo_registro after insert on registro for each row 
+begin 
+
+if :new.edad<0 then 
+raise_application_error(-20001, 'lo siento no puedes meter numeros negativos');
+else
+if :new.edad >=18 then 
+
+insert into registro_mayores values(:new.id_registro, :new.nombre, :new.email, :new.edad);
+else 
+insert into registro_menores values(:new.id_registro, :new.nombre, :new.email, :new.edad);
+
+end if;
+end if;
+end;
+/ 
+
+insert into registro values(1,'Juana','juan@gmail.com',17);
+insert into registro values(2,'Pedro','pedro@gmail.com',19);
+insert into registro values(3,'Chana','Chana@gmail.com',-18);
+insert into registro values(4,'Pablo','pablo@gmail.com',29);
+insert into registro values(5,'Juana','juan@gmail.com',23);
+insert into registro values(6,'Pedro','pedro@gmail.com',15);
+
+
+select * from registro;
+select * from registro_menores;
+select * from registro_mayores;
