@@ -51,3 +51,21 @@ create table historialacademico(id_historial integer not null,
 constraint pk_id_historial primary key (id_historial),
 constraint pk3_id_matricula foreign key(id_matricula) references estudiante(id_matricula));
 describe historialacademico;
+
+create sequence sec_estudiante
+start with 1
+increment by 1
+nomaxvalue;
+create sequence se_historial
+start with 1
+increment by 1
+nomaxvalue;
+create sequence se_carrera
+start with 1
+increment by 1
+nomaxvalue;
+create sequence se_datosfam
+start with 1
+increment by 1
+nomaxvalue;
+
