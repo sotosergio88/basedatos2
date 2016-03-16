@@ -11,7 +11,7 @@ create table estudiante(id_matricula integer not null,
               sexo varchar2(15) not null,
               estadocivil varchar2(15) not null,
               ocupacion varchar2(50) not null,
-              ingresos float ,
+              ingresos float,
               direccion varchar2(50) not null,
               telcasa varchar2(20) not null,
               telcelular varchar2(20) not null,
@@ -56,16 +56,40 @@ create sequence sec_estudiante
 start with 1
 increment by 1
 nomaxvalue;
+
 create sequence se_historial
 start with 1
 increment by 1
 nomaxvalue;
+
 create sequence se_carrera
 start with 1
 increment by 1
 nomaxvalue;
+
 create sequence se_datosfam
 start with 1
 increment by 1
 nomaxvalue;
 
+create or replace procedure guardar_estudiante(my_id_matricula out integer,
+                                               my_nombre in varchar2,
+                                               my_ap_paterno in varchar2,
+                                               my_ap_materno in varchar2,
+                                               my_fechanacimiento in date,
+                                               my_sexo in varchar2,
+                                               my_estadocivil in varchar2,
+                                               my_ocupacion in varchar2,
+                                               my_ingresos in float,
+                                               my_direccion in varchar2,
+                                               my_telcasa in varchar2,
+                                               my_telcelular in varchar2,
+                                               my_email in varchar2)
+as
+begin
+select sec_estudiante.nextval into my_id_matricula from dual;
+insert into estudiante values
+(1,'juan','perez','sanchez',06-09-1992,'masculino','soltero','estudiante',
+'','ecatepec, estado de mexico','551006894','5544947887','juancho@gmail.com');
+end;
+/
