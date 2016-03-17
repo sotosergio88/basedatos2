@@ -1,0 +1,19 @@
+create or replace procedure actualizar_producto(my_id_producto out integer,
+my_descropcion in varchar2,my_marca in varchar2,my_categoria in varchar2,
+my_precio in float)
+as 
+begin
+select sec_precio.nextval into my_id_prodcuto from dual;
+insert into actualizar_producto values(my_id_producto,my_descripcion,my_marcar,my_categoria,my_precio);
+end;
+/
+
+create or replace trigger actualizar_precio before update on producto for each row 
+begin
+if :new.precio <:old.precio then
+raise_application_error(-20001,'Lo siento pero el nuevo precio debe ser mayor que el anterior');
+end if;
+end;
+/
+update producto set precio=37 where id_producto=1;
+
