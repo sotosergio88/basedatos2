@@ -57,17 +57,17 @@ start with 1
 increment by 1
 nomaxvalue;
 
-create sequence se_historial
+create sequence sec_historial
 start with 1
 increment by 1
 nomaxvalue;
 
-create sequence se_carrera
+create sequence sec_carrera
 start with 1
 increment by 1
 nomaxvalue;
 
-create sequence se_datosfam
+create sequence sec_datosfam
 start with 1
 increment by 1
 nomaxvalue;
@@ -91,5 +91,90 @@ select sec_estudiante.nextval into my_id_matricula from dual;
 insert into estudiante values
 (1,'juan','perez','sanchez',06-09-1992,'masculino','soltero','estudiante',
 '','ecatepec, estado de mexico','551006894','5544947887','juancho@gmail.com');
+end;
+/
+create or replace procedure guardar_historial(my_id_historial out integer,
+                                              my_id_matricula out integer,
+                                              my_nombre in varchar2,
+                                              my_ap_paterno in varchar2,
+                                              my_ap_materno in varchar2,
+                                              my_fechanacimiento in date,
+                                              my_sexo in varchar2,
+                                              my_estadocivil in varchar2,
+                                              my_ocupacion in varchar2,
+                                              my_ingresos in float,
+                                              my_direccion in varchar2,
+                                              my_telcasa in varchar2,
+                                              my_telcelular in varchar2,
+                                              my_email in varchar2
+                                              my_nombreescuela in varchar2,
+                                              my_registrosep in varchar2,
+                                              my_promedio in integer,
+                                              my_direccion in varchar2,
+                                              my_observacion in varchar2)
+as 
+begin
+select sec_historial.nextval into my_id_historial from dual;
+insert into historialacademico values(1,1,'juan','perez','sanchez',06-09-1992,'masculino','soltero','estudiante',
+'','ecatepec, estado de mexico','551006894','5544947887','juancho@gmail.com','benito juarez','fhz258963',9.3,
+'texcoco, calle negra del olvido','es la escuela azul esa fea');
+end;
+/
+create or replace procedure guardar_carrera(my_id_carrera out integer,
+                                            my_id_matricula out integer,
+                                            my_nombre in varchar2,
+                                            my_ap_paterno in varchar2,
+                                            my_ap_materno in varchar2,
+                                            my_fechanacimiento in date,
+                                            my_sexo in varchar2,
+                                            my_estadocivil in varchar2,
+                                            my_ocupacion in varchar2,
+                                            my_ingresos in float,
+                                            my_direccion in varchar2,
+                                            my_telcasa in varchar2,
+                                            my_telcelular in varchar2,
+                                            my_email in varchar2)
+                                            my_nombre in varchar2,
+                                            my_custrimestre in integer,
+                                            my_promediogeneral in integer,
+                                            my_observaciones in varchar2)
+                                           
+as
+begin
+select sec_carrera.nextval into my_id_carrera from dual;
+insert into carrera values(1,1,'juan','perez','sanchez',06-09-1992,'masculino','soltero','estudiante',
+'','ecatepec, estado de mexico','551006894','5544947887','juancho@gmail.com','Ing. electronica',1,0,'es su primer cuatrimestre');
+end;
+/
+create or replace procedure guardar_datosfamiliares(my_id_id_tutor out integer,
+                                                    my_id_matricula out integer,
+                                                    my_nombre in varchar2,
+                                                    my_ap_paterno in varchar2,
+                                                    my_ap_materno in varchar2,
+                                                    my_fechanacimiento in date,
+                                                    my_sexo in varchar2,
+                                                    my_estadocivil in varchar2,
+                                                    my_ocupacion in varchar2,
+                                                    my_ingresos in float,
+                                                    my_direccion in varchar2,
+                                                    my_telcasa in varchar2,
+                                                    my_telcelular in varchar2,
+                                                    my_email in varchar2)
+                                                    my_nombre in varchar2,
+                                                    my_ap_paterno in varchar2,
+                                                    my_ap_materno in varchar2,
+                                                    my_fechanacimineto in date,
+                                                    my_parentesco in varchar2,
+                                                    my_telcasa in varchar2,
+                                                    my_telcel in varchar2,
+                                                    my_email in varchar2,
+                                                    my_direccion in varchar2)
+as
+begin
+select sec_datosfam.nextval into my_id_tutor from dual;
+insert into datosfamiliares values(1,'juan','perez','sanchez',06-09-1992,'masculino','soltero','estudiante',
+                                  '','ecatepec, estado de mexico','551006894','5544947887','juancho@gmail.com',
+                                  'ramon','perez','martinez',10-12-1972,'padre','551006894','5544948778',
+                                  'ramontinez@gmail.com','ecatepec, estado de mexico');
 end;
 /
