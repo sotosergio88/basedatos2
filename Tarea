@@ -1,3 +1,4 @@
+```SQL
 3 tablas (minimo) normatizadas y relacionadas correctamente.
 
 create database universidad;
@@ -178,3 +179,4 @@ insert into datosfamiliares values(1,'juan','perez','sanchez',06-09-1992,'mascul
                                   'ramontinez@gmail.com','ecatepec, estado de mexico');
 end;
 /
+```
