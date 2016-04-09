@@ -131,3 +131,29 @@ select * from persona;
 select * from editorial;
 select * from autor;
 select * from libros;
+
+create or replace procedure actualizar_persona(my_id_persona in number,my_tel_cel in varchar2)
+as 
+begin
+update persona set tel_cel=my_id_persona where id_persona=my_id_persona;
+end actualizar_persona;
+/
+--generamos el disparador que nos limita a que el nuevo precio siempre sea mayor al viejo
+
+create or replace trigger actualizar_tel_cel before update on persona for each row 
+begin
+if :new.tel_cel=:old.tel_cel then
+raise_application_error(-20001,'Mientes es el mismo telefono celular anterior no le prestes el libro por mentiros@');
+end if;
+end;
+/
+
+/*--probaremos a ver si funciona 2da forma:
+begin
+actualizar_productoto(1,38.5);
+end;
+/
+*/
+
+update persona set tel_cel='55-44-44-77-77' where id_persona=00;
+select * from  persona;
