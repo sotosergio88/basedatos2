@@ -1,0 +1,133 @@
+create table persona(id_persona integer not null,
+                     nombre varchar2(50) not null,
+                     direccion varchar2(100) not null,
+                     tel_cel varchar2(20) not null,
+                     email varchar2(30) not null,
+constraint pk_id_persona  primary key (id_persona));
+
+describe persona;
+
+create table editorial(id_editorial integer not null,
+                       nombre char(50) not null,
+constraint pk_id_editorial primary key (id_editorial));
+                       
+describe editorial;
+
+create table autor(id_autor integer not null,
+                   nombre varchar2(50) not null,
+constraint pk_id_autor primary key (id_autor));
+
+describe autor;
+
+create table libros(id_libro integer not null,
+                    isbn integer not null,
+                    titulo varchar2(50) not null,
+                    resumen varchar2(100) not null,
+                    fecha_publicacion date not null,
+                    num_pag integer not null,
+                    id_autor integer not null,
+constraint pk_id_libro primary key(id_libro),
+constraint pk1_id_autor foreign key (id_autor) references autor(id_autor));
+
+describe libros;
+
+create table prestamo(id_prestamo integer not null,
+                      fecha date not null,
+                      id_persona integer not null,
+                      id_libro integer not null,
+                      id_editorial integer not null,
+constraint pk_id_prestamo primary key(id_prestamo),
+constraint fk2_id_libro foreign key (id_libro) references libro(id_libro),
+constraint fk3_id_editorial foreign key (id_editorial) references editorial(id_editorial));
+
+describe prestamo;
+
+insert into persona values(00,'juan perez','estado de mexico','55-44-44-77-77','juanperez@gmail.com');
+insert into persona values(01,'miguel sanchez','estado de veracruz','55-44-44-77-79','miguesan@gmail.com');
+insert into persona values(02,'moises ramirez','estado de puebla','55-44-44-77-97','moiram@gmail.com');
+insert into persona values(03,'carlos rodriguez','estado de oaxaca','55-44-44-97-77','carlrod@gmail.com');
+insert into persona values(04,'fernando escandon','quintana roo','55-44-44-77-88','fernancandon@gmail.com');
+insert into persona values(05,'marcelo cano','baja california sur','55-44-55-67-77','canomarce@gmail.com');
+insert into persona values(06,'rodrigo rondon','tampico','55-44-99-77-77','rodridon@gmail.com');
+insert into persona values(07,'luis gomez','queretaro','55-44-44-10-77','gomlu@gmail.com');
+insert into persona values(08,'sebastian morales','ciudad juarez','55-77-44-77-77','sebasmor@gmail.com');
+insert into persona values(09,'nanci camacho','chihuahua','55-44-44-77-66','nancho@gmail.com');
+insert into persona values(10,'guillermo del toro','puerto la cruz','55-44-33-15-32','guilletoro@gmail.com');
+insert into persona values(11,'cristian castro','texcoco,''55-44-44-88-99','cristro@gmail.com');
+insert into persona values(12,'moises resendiz','interlomas','55-33-11-77-77','moidiz@gmail.com');
+insert into persona values(13,'manuel calamardo','ecatepec', '55-40-45-77-77','calman@gmail.com');
+insert into persona values(14,'federico acuña','tecamac','55-44-44-79-22','acufer@gmail.com');
+insert into persona values(15,'paco lerdo','impulsora','55-44-44-55-22','lerpac@gmail.com');
+insert into persona values(16,'erwin delgado','indios verdes','55-44-84-67-87','erwingado@gmail.com');
+insert into persona values(17,'yahir robles','loma linda','55-44-44-55-22','yahibles@gmail.com');
+insert into persona values(18,'enrique moreno','cerro gordo','55-44-44-77-44','morenoque@gmail.com');
+insert into persona values(19,'laura coln','atlanta','404-784-7755','colnlaura@gmail.com');
+
+insert into editorial values(300,'RBA libros');
+insert into editorial values(301,'Ebooks de van');
+insert into editorial values(302,'Edhosa');
+insert into editorial values(303,'versatil');
+insert into editorial values(304,'Bloomsbury');
+insert into editorial values(305,'Minotauro');
+insert into editorial values(306,'Planeta');
+insert into editorial values(307,'Salamandra');
+insert into editorial values(308,'Planeta');
+insert into editorial values(309,'Grijalbo');
+insert into editorial values(310,'S.A. EDICIONES B');
+insert into editorial values(311,'Siruela');
+insert into editorial values(312,'WARNE');
+insert into editorial values(313,'Mayon');
+insert into editorial values(314,'Proyecto Gutenberg');
+insert into editorial values(315,'Quaterni');
+insert into editorial values(316,'Applewood Books');
+insert into editorial values(317,'Sturgis E. Leavitt y Sterling A.');
+insert into editorial values(318,'Limited edition');
+insert into editorial values(319,'Duell');
+
+insert into autor values(200,'xavier aldekoa');
+insert into autor values(201,'joe hills');
+insert into autor values(202,'Patricia Briggs');
+insert into autor values(203,'Collins, Suzanne');
+insert into autor values(204,'J.K. Rowling');
+insert into autor values(205,'J. R. R. Tolkien');
+insert into autor values(206,'C.S. Lewis');
+insert into autor values(207,' Antoine de Saint-Exupéry');
+insert into autor values(208,'Dan Brown');
+insert into autor values(209,'Paulo Cohelo');
+insert into autor values(210,'Margaret Mitchell');
+insert into autor values(211,'Jostein Gaarder');
+insert into autor values(212,'Beatrix Potter');
+insert into autor values(213,'Elbert Hubbard');
+insert into autor values(214,' Charles Monroe');
+insert into autor values(215,'Jacqueline Susann');
+insert into autor values(216,'Noah Webster');
+insert into autor values(217,'William Holmes McGuffey');
+insert into autor values(218,'Dick Bruna');
+insert into autor values(219,'Dr. Benjamin Spock');
+
+insert into libros values(100,1000,' viaje al corazon del hambre','emergencia humanitaria en el cuerno de africa', '08-12-2014',800,200);
+insert into libros values(101,1001,'fantasmas','Imogena es guapa pero esta muerta y no lo sabe','03-01-2015',350),201;
+insert into libros values(102,1002,'cry wolf','Anna desconocia la existencia de los licantropos','01-01-2015',400,202);
+insert into libros values(103,1003,'sinsajo','katnis everden ha sobrevivido dos veces a los juegos del hambre','18-02-2015',250,203);
+insert into libros values(104,1004,'Harry Potter','s una heptalogía de novelas fantásticas','02-04-1997',210,204);
+insert into libros values(105,1005,'El Señor De Los Anillos','es una novela de fantasía épica escrita por el filólogo y escritor británico','15-06-54',235,205);
+insert into libros values(106,1006,'Las Cronicas De Narnia','es una heptalogía de libros infantiles','19-11-1949',240,206);
+insert into libros values(107,1007,'El principito','Se considera un libro infantil por la forma en la que está escrito','23-05-1943',500,207);
+insert into libros values(108,1008,'El Código Da Vinci','es una novela de misterio','14-02-2003',600,208);
+insert into libros values(109,1009,'El Alquimista','es una paráfrasis de Las mil y una noches','06-09-1988',450,209);
+insert into libros values(110,1010,'Lo que el viento se llevó',' es una novela','04-06-1936',610,210);
+insert into libros values(111,1011,'El mundo de Sofía','es la novela más conocida escrita por el noruego Jostein','18-04-1991',200,211);
+insert into libros values(112,1012,'Peter Rabbit','Peter Rabbit es el protagonista de una serie de libros para niños','12-12-1902',300,212);
+insert into libros values(113,1013,'Un mensaje a García','relata brevemente la anécdota del soldado estadounidense Rowan','15-09-1899',700,213);
+insert into libros values(114,1014,'In His Steps','la imitación de Dios, que ganó la moneda mucho más tras la publicación del libro','25-07-1897',600,214);
+insert into libros values(115,1015,'El Valle De Las Muñecas','la primera novela en clave de una autora','09-03-1966',400,215);
+insert into libros values(116,1016,'American Spelling Book','Contiene los rudimientos del idioma ingles en las escuelas de Estados Unidos','16-08-1783',500,216);
+insert into libros values(117,1017,'The McGuffey Readers','liros de texto','02-09-1853',900,217);
+insert into libros values(118,1018,'Miffy','Miffy es un personaje infantil','30-01-1955',970,218);
+insert into libros values(119,1019,'El libro de los bebés y el cuidado de niños','Spock apoyaba ideas sobre la paternidad que -en su época- no eran ortodoxas','05-12-1946',790,219);
+
+
+select * from persona;
+select * from editorial;
+select * from autor;
+select * from libros;
