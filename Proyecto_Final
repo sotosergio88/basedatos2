@@ -135,7 +135,7 @@ select * from libros;
 create or replace procedure actualizar_persona(my_id_persona in number,my_tel_cel in varchar2)
 as 
 begin
-update persona set tel_cel=my_id_persona where id_persona=my_id_persona;
+update persona set tel_cel=my_tel_cel where id_persona=my_id_persona;
 end actualizar_persona;
 /
 --generamos el disparador que nos limita a que el nuevo precio siempre sea mayor al viejo
