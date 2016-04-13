@@ -157,3 +157,30 @@ end;
 
 update persona set tel_cel='55-44-44-77-77' where id_persona=00;
 select * from  persona;
+
+_____________________________________________
+create or replace procedure actualizar_editorial(my_id_editorial in number,my_nombre in varchar2)
+as 
+begin
+update editorial set nombre=my_nombre where id_editorial=my_id_editorial;
+end actualizar_editorial;
+/
+--generamos el disparador que nos limita a que el nuevo precio siempre sea mayor al viejo
+
+create or replace trigger actualizar_my_nombre before update on editorial for each row 
+begin
+if :new.nombre=:old.nombre then
+raise_application_error(-20001,'Mientes es el mismo nombre no corregiste el error');
+end if;
+end;
+/
+create or replace trigger actualizar_my_nombre before update on editorial for each row 
+begin
+if :new.nombre=:old.nombre then
+raise_application_error(-20001,'Mientes es el mismo nombre no corregiste el error');
+end if;
+end;
+/
+update editorial set nombre='Ebooks de van' where id_editorial=301;
+select * from  editorial;
+______________________________________________
