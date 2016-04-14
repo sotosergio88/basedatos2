@@ -42,6 +42,15 @@ constraint fk3_id_editorial foreign key (id_editorial) references editorial(id_e
 
 describe prestamo;
 
+create table deudor(id_deudor integer,
+                    fecha date,
+                    id_persona integer,
+                    id_libro integer,
+                    id_editorial integer,
+constraint pk_id_deudor primary key (id_deudor));
+describe deudor;
+
+
 insert into persona values(00,'juan perez','estado de mexico','55-44-44-77-77','juanperez@gmail.com');
 insert into persona values(01,'miguel sanchez','estado de veracruz','55-44-44-77-79','miguesan@gmail.com');
 insert into persona values(02,'moises ramirez','estado de puebla','55-44-44-77-97','moiram@gmail.com');
