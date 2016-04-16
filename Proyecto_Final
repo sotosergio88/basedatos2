@@ -193,16 +193,12 @@ end;
 update editorial set nombre='Ebooks de van' where id_editorial=301;
 select * from  editorial;
 ______________________________________________
-create or replace trigger  insertar_prestamo after insert on prestamo for each row
+create or replace trigger  insertar_prestamo before insert  on prestamo for each row
 begin 
 if :new.id_persona=:old.id_persona then
 raise_application_error(-20001, 'Lo siento aun debes un libro, regrésalo.');
 else 
-if :new.id_persona=:new.id_persona then
 insert into prestamo values(:new.id_prestamo, :new.fecha, :new.id_persona, :new.id_libro, :new.id_editorial);
-else 
-insert into deudor values(:new.id_prestamo, :new.fecha, :new.id_persona, :new.id_libro, :new.id_editorial);
-end if;
 end if;
 end;
 /
