@@ -147,7 +147,7 @@ begin
 update persona set tel_cel=my_tel_cel where id_persona=my_id_persona;
 end actualizar_persona;
 /
---generamos el disparador que nos limita a que el nuevo precio siempre sea mayor al viejo
+--generamos el disparador que nos diga si el nuevo telefono es diferente al viejo
 
 create or replace trigger actualizar_tel_cel before update on persona for each row 
 begin
@@ -159,12 +159,12 @@ end;
 
 /*--probaremos a ver si funciona 2da forma:
 begin
-actualizar_productoto(1,38.5);
+actualizar_personao(1,5544987958);
 end;
 /
 */
 
-update persona set tel_cel='55-44-44-77-77' where id_persona=00;
+update persona set tel_cel='55-44-44-77-77' where id_persona=1;
 select * from  persona;
 
 _____________________________________________
@@ -174,7 +174,7 @@ begin
 update editorial set nombre=my_nombre where id_editorial=my_id_editorial;
 end actualizar_editorial;
 /
---generamos el disparador que nos limita a que el nuevo precio siempre sea mayor al viejo
+--generamos el disparador que nos diga si corregimos el error de editorial
 
 create or replace trigger actualizar_my_nombre before update on editorial for each row 
 begin
